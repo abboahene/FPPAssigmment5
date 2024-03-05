@@ -31,4 +31,20 @@ public class Computer {
                 ", processorSpeed: "+ processorSpeed +
                 "}";
     }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(manufacturer, processor, ramSize, processorSpeed);
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        Computer comp = (Computer) obj;
+        return manufacturer.equals(comp.manufacturer)
+                && processor.equals(comp.processor)
+                && ramSize == comp.ramSize
+                && Math.round(processorSpeed) == Math.round(comp.processorSpeed);
+    }
 }
